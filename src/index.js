@@ -1,10 +1,15 @@
-import "./styles.css";
+const textAnime = document.getElementById("text-anime");
+const splitText = [...textAnime.innerHTML];
 
-document.getElementById("app").innerHTML = `
-<h1>Hello Vanilla!</h1>
-<div>
-  We use the same configuration as Parcel to bundle this sandbox, you can find more
-  info about Parcel 
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-</div>
-`;
+const wrapCharSpan = () => {
+  return splitText.map((char) => `<span>${char}</span>`).join("");
+};
+
+textAnime.innerHTML = wrapCharSpan(textAnime.textContent);
+
+setInterval(() => {
+  textAnime.classList.add("-visible");
+  setTimeout(() => {
+    textAnime.classList.remove("-visible");
+  }, 2000);
+}, 4000);
